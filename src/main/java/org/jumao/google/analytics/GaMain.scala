@@ -27,9 +27,9 @@ object GaMain extends GaBasic {
 
         val platformIdsRDD = spark.sparkContext.parallelize(getPlatformIds())
 
-        val hbasePoRDD = platformIdsRDD.mapPartitions(mapPartiFunc(_)) //the same as .map(), here.
+        val hbasePoRDD = platformIdsRDD.mapPartitions(getHbasePo(_)) //the same as .map(), here.
 
-        val pairRDD = new PairRDDFunctions(hbasePoRDD.map(convert(_)))
+        val pairRDD = new PairRDDFunctions(hbasePoRDD.map(convertToPuts(_)))
 
         pairRDD.saveAsHadoopDataset(HbaseUtils.jobConfig)
     }

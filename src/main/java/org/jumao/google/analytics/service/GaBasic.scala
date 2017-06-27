@@ -23,7 +23,7 @@ class GaBasic {
     }
 
 
-    def convert(hbasePo: HbasePo) = {
+    def convertToPuts(hbasePo: HbasePo) = {
         val rowKey = hbasePo.getPlatformId + hbasePo.getDate
         val put = new Put(Bytes.toBytes(rowKey))
 
@@ -47,7 +47,7 @@ class GaBasic {
     }
 
 
-    val mapPartiFunc = (it: Iterator[String]) => {
+    val getHbasePo = (it: Iterator[String]) => {
         val platformIds = it.toArray
         val hbasePoAb = new ArrayBuffer[HbasePo](platformIds.length)
 
