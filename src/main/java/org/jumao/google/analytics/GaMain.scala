@@ -3,8 +3,8 @@ package org.jumao.google.analytics
 import org.apache.spark.rdd.PairRDDFunctions
 import org.apache.spark.sql.SparkSession
 import org.jumao.google.analytics.constants.Key
-import org.jumao.google.analytics.service.{GaBasic}
-import org.jumao.google.analytics.utils.{DLOG, HbaseUtils, SystemPropUtils}
+import org.jumao.google.analytics.service.GaBasic
+import org.jumao.google.analytics.utils.{HbaseUtils, SystemPropUtils}
 
 
 
@@ -22,7 +22,7 @@ object GaMain extends GaBasic {
         SystemPropUtils.initPropFile(confPath)
 
         val spark = SparkSession.builder.appName(Key.APP_NAME)
-                .master(Key.MASTER_OF_SPARK).getOrCreate()
+                .master(Key.SPARK_MASTER).getOrCreate()
 
         val platformIdsRDD = spark.sparkContext.parallelize(getPlatformIds())
         val hbasePoRDD = platformIdsRDD.mapPartitions(getHbasePo(_)) //the same as .map(), here.

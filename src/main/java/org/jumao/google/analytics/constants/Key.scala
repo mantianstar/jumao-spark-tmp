@@ -13,7 +13,7 @@ object Key {
     private val HDFS_SITE_CONF_PROP = "hdfs.site.conf"
     private val GA_KEY_FILE_LOCATION_PROP = "ga.key.file.location"
 
-    val MASTER_OF_SPARK = SystemPropUtils.get("spark.master", "yarn")
+    val SPARK_MASTER = SystemPropUtils.get("spark.master", "yarn")
     val LOG_FILE_PATH = SystemPropUtils.get(LOG_FILE_PATH_PROP, "/tmp/spark/app.log")
     val HADOOP_CORE_SITE_CONF = SystemPropUtils.get(HADOOP_CORE_SITE_CONF_PROP, "/opt/cloudera/parcels/CDH/lib/hadoop/etc/hadoop/core-site.xml")
     val HDFS_SITE_CONF = SystemPropUtils.get(HDFS_SITE_CONF_PROP, "/opt/cloudera/parcels/CDH/lib/hadoop/etc/hadoop/hdfs-site.xml")
