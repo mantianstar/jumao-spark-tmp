@@ -5,9 +5,6 @@ import org.jumao.google.analytics.utils.SystemPropUtils
 
 object Key {
 
-    //val CONF_PATH = "src/main/resources/spark-job-conf.properties"
-    //val CONF_PATH = "/tmp/spark/spark-job-conf.properties"
-
     val APP_NAME = "export-jumore-en-from-ga"
 
     private val LOG_FILE_PATH_PROP = "log.file.path"
