@@ -5,7 +5,10 @@ import org.jumao.google.analytics.utils.SystemPropUtils
 
 object Key {
 
-    val APP_NAME = "export-jumore-en-pv-uv"
+    //val CONF_PATH = "src/main/resources/spark-job-conf.properties"
+    val CONF_PATH = "/tmp/spark/spark-job-conf.properties"
+
+    val APP_NAME = "export-jumore-en-from-ga"
 
     private val LOG_FILE_PATH_PROP = "log.file.path"
 
@@ -13,14 +16,11 @@ object Key {
     private val HDFS_SITE_CONF_PROP = "hdfs.site.conf"
     private val GA_KEY_FILE_LOCATION_PROP = "ga.key.file.location"
 
-    val CONF_PATH = "src/main/resources/spark-job-conf.properties"
-//    val CONF_PATH = "/tmp/spark/spark-job-conf.properties"
-    //SystemPropUtils 初始化要用到上面的参数，声明顺序不能乱
-    val MASTER_OF_SPARK = SystemPropUtils.get("master", "")
+    val MASTER_OF_SPARK = SystemPropUtils.get("spark.master", "yarn")
     val LOG_FILE_PATH = SystemPropUtils.get(LOG_FILE_PATH_PROP, "/tmp/spark/app.log")
-    val HADOOP_CORE_SITE_CONF = SystemPropUtils.get(HADOOP_CORE_SITE_CONF_PROP, "")
-    val HDFS_SITE_CONF = SystemPropUtils.get(HDFS_SITE_CONF_PROP, "")
-    val GA_KEY_FILE_LOCATION = SystemPropUtils.get(GA_KEY_FILE_LOCATION_PROP, "")
+    val HADOOP_CORE_SITE_CONF = SystemPropUtils.get(HADOOP_CORE_SITE_CONF_PROP, "/opt/cloudera/parcels/CDH/lib/hadoop/etc/hadoop/core-site.xml")
+    val HDFS_SITE_CONF = SystemPropUtils.get(HDFS_SITE_CONF_PROP, "/opt/cloudera/parcels/CDH/lib/hadoop/etc/hadoop/hdfs-site.xml")
+    val GA_KEY_FILE_LOCATION = SystemPropUtils.get(GA_KEY_FILE_LOCATION_PROP, "/tmp/spark/MyProject-81155b910cde.p12")
 
     /**
       * 若将 conf 文件放在 hdfs，则初始化 [[org.apache.hadoop.hdfs.client.HdfsUtils]] 时，部分参数要写死，
@@ -40,8 +40,8 @@ object Key {
     private val HDFS_HOST_PROP = "hdfs.host"
     private val HDFS_PORT_PROP = "hdfs.port"
 
-    val HDFS_HOST = SystemPropUtils.get(HDFS_HOST_PROP, "")
-    val HDFS_PORT = SystemPropUtils.get(HDFS_PORT_PROP, "")
+    val HDFS_HOST = SystemPropUtils.get(HDFS_HOST_PROP, "nn1")
+    val HDFS_PORT = SystemPropUtils.get(HDFS_PORT_PROP, "8020")
     val HBASE_TABLE = "jmbi:google_analytics_en"
     val CF_INFO = "info"
     val DATE = "date"
