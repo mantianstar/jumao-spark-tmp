@@ -1,9 +1,17 @@
 package org.jumao.google.analytics
 
+import org.apache.hadoop.hbase.mapred.TableOutputFormat
+import org.apache.hadoop.mapred.JobConf
+import org.apache.spark.rdd.PairRDDFunctions
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.{SparkConf, SparkContext}
 import org.jumao.google.analytics.constants.Key
-import org.jumao.google.analytics.service.{GaBasic, JumoreAnalyticsReporting}
-import org.jumao.google.analytics.utils.PlatformUtil
+import org.jumao.google.analytics.entity.HbasePo
+import org.jumao.google.analytics.service.{GaBasic, JumoreAnalytics}
+import org.jumao.google.analytics.utils.HbaseUtils.conf
+import org.jumao.google.analytics.utils.{HbaseUtils, PlatformUtil}
+
+import scala.collection.mutable.ArrayBuffer
 
 
 /**
@@ -12,19 +20,18 @@ import org.jumao.google.analytics.utils.PlatformUtil
 object GaMain extends GaBasic {
 
     def main(args: Array[String]): Unit = {
-        val conf = new SparkConf()
-                .setAppName(Key.APP_NAME)
-                .setMaster(Key.MASTER_OF_SPARK)
-        val sparkContext = SparkContext.getOrCreate(conf)
+        val spark = SparkSession.builder
+                .appName(Key.APP_NAME)
+                .master(Key.MASTER_OF_SPARK)
+                .getOrCreate()
 
-        val rdd = sparkContext.parallelize(getPlatformIds())
-        rdd.foreachPartition(it => {
+        val platformIdsRDD = spark.sparkContext.parallelize(getPlatformIds())
 
-//            JumoreAnalyticsReporting.reqAndGetHbasePo()
+        val hbasePoRDD = platformIdsRDD.mapPartitions(mapPartiFunc(_)) //the same as .map(), here.
 
-        })
+        val pairRDD = new PairRDDFunctions(hbasePoRDD.map(convert(_)))
 
+        pairRDD.saveAsHadoopDataset(HbaseUtils.jobConfig)
     }
-
 
 }

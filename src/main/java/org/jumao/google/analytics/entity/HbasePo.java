@@ -5,8 +5,8 @@ public class HbasePo {
     private String date = "";
     private String targetHour = "";
     private String platformId = "";
-    private String pv = "";
-    private String uv = "";
+    private String pv = "0";
+    private String uv = "0";
 
     public String getTargetHour() {
         return targetHour;

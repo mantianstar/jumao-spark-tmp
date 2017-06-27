@@ -7,7 +7,7 @@ import org.apache.hadoop.fs.Path
 import org.apache.spark.{SparkConf, SparkContext}
 import org.jumao.google.analytics.constants.Key
 import org.jumao.google.analytics.constants.Key.HADOOP_CORE_SITE_CONF_PROP
-import org.jumao.google.analytics.service.JumoreAnalyticsReporting
+import org.jumao.google.analytics.service.JumoreAnalytics
 import org.jumao.google.analytics.utils.{DLOG, GeneralUtils, SystemPropUtils}
 import org.slf4j.LoggerFactory
 
@@ -54,8 +54,8 @@ object TestMain {
             sb.append("\"\":"+directory2.getAbsolutePath()).append(DLOG.NEW_LINE)
 
             try {
-                sb.append(classOf[JumoreAnalyticsReporting].getResource("/").toString).append(DLOG.NEW_LINE)
-                sb.append(classOf[JumoreAnalyticsReporting].getResource("").toString).append(DLOG.NEW_LINE)
+                sb.append(classOf[JumoreAnalytics].getResource("/").toString).append(DLOG.NEW_LINE)
+                sb.append(classOf[JumoreAnalytics].getResource("").toString).append(DLOG.NEW_LINE)
             } catch {
                 case e: Exception => sb.append(DLOG.NEW_LINE).append("error:").append(GeneralUtils.getAllStackTraceFromExp(e))
             }

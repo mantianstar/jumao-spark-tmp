@@ -35,5 +35,16 @@ object Key {
     val PV = "pv"
     val UV = "uv"
     val TODAY = "today"
+    val VIEW_ID = "viewId"
+
+    private val HDFS_HOST_PROP = "hdfs.host"
+    private val HDFS_PORT_PROP = "hdfs.port"
+
+    val HDFS_HOST = SystemPropUtils.get(HDFS_HOST_PROP, "")
+    val HDFS_PORT = SystemPropUtils.get(HDFS_PORT_PROP, "")
+    val HBASE_TABLE = "jmbi:google_analytics_en"
+    val CF_INFO = "info"
+    val DATE = "date"
+    val PLATFORM_ID = "platform_id"
 
 }

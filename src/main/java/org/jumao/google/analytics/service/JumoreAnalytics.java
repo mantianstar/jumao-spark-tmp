@@ -36,7 +36,10 @@ import org.jumao.google.analytics.utils.DateUtils;
 import org.jumao.google.analytics.utils.PlatformUtil;
 
 
-public class JumoreAnalyticsReporting {
+/**
+ * 一次只能请求一个 viewId
+ */
+public class JumoreAnalytics {
 
     private static final SimpleDateFormat HBASE_NO_HOUR_FORMAT = new SimpleDateFormat("yyyyMMdd");
     private static final String APPLICATION_NAME = "Jumore Analytics Reporting";
@@ -132,9 +135,10 @@ public class JumoreAnalyticsReporting {
                 .setAlias(Key.UV());
 
 
+        String viewId = PlatformUtil.get(platformId);
         // Create the ReportRequest object.
         ReportRequest request = new ReportRequest()
-                .setViewId(PlatformUtil.get(platformId))
+                .setViewId(viewId)
                 .setDateRanges(Arrays.asList(dateRange))
                 .setDimensions(Arrays.asList(dimension1))
                 .setMetrics(Arrays.asList(metric1, metric2));
@@ -184,7 +188,7 @@ public class JumoreAnalyticsReporting {
         List<ReportRow> rows = report.getData().getRows();
 
         if (rows == null) {
-            throw new Exception("report.getData().getRows() return null");
+            return hbasePo;
         }
 
         String targetHour = hbasePo.getTargetHour();
@@ -223,12 +227,6 @@ public class JumoreAnalyticsReporting {
             }
         }
 
-        if (hbasePo.getPv().isEmpty()) {
-            hbasePo.setPv("0");
-        }
-        if (hbasePo.getUv().isEmpty()) {
-            hbasePo.setUv("0");
-        }
         return hbasePo;
     }
 

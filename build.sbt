@@ -35,5 +35,7 @@ libraryDependencies ++= Seq(
     "commons-codec" % "commons-codec" % "1.10",
     "commons-io" % "commons-io" % "2.5",
     "org.codehaus.jettison" % "jettison" % "1.3.8",
-    "com.google.guava" % "guava" % "16.0.1"
+    "com.google.guava" % "guava" % "16.0.1",
+    "javax.servlet" % "servlet-api" % "2.5" % "provided"
+
 )
