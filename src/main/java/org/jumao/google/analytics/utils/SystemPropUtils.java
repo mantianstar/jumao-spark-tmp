@@ -16,15 +16,13 @@ public class SystemPropUtils {
 //	private static final Log DLOG = LogFactory.getLog(SystemPropUtils.class);
 	private static Properties prop = new Properties();
 
-	static {
-		loadPropertiesFile();
-	}
-
-	public static void loadPropertiesFile() {
+	/**
+	 * main 方法中手动初始化。
+	 */
+	public static void initPropFile(String confPath) {
 		InputStream input = null;
 		BufferedReader reader = null;
 		try {
-			String confPath = Key.CONF_PATH();
 			if (confPath.startsWith("hdfs")) {
 				input = HDFSUtils.instance().open(new Path(confPath));
 			} else {
@@ -35,7 +33,7 @@ public class SystemPropUtils {
 			prop.load(reader);
 		} catch (Exception e) {
 			e.printStackTrace();
-			DLOG.error("Failed to load config from '" + Key.CONF_PATH()
+			DLOG.error("Failed to load config from '" + confPath
 					+ "', cause:" + e.getMessage());
 		} finally {
 			IOUtils.closeQuietly(input);

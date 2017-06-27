@@ -18,10 +18,6 @@ object DLOG {
     var errLogFile = new File(Key.LOG_FILE_PATH + ".error")
     val NEW_LINE = "\n"
 
-    def log(tuple: (String, Long)): Unit = {
-        val str = s"${minDataFormat.format(new util.Date())} ${tuple._1}_${tuple._2}\n"
-        Files.append(str, logFile, Charset.defaultCharset())
-    }
 
     def log(str: String): Unit = {
         try {
