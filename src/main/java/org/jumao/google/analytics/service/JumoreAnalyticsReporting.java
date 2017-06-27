@@ -1,4 +1,4 @@
-package org.jumao.google.analytics;
+package org.jumao.google.analytics.service;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
@@ -9,6 +9,7 @@ import com.google.api.client.json.gson.GsonFactory;
 import java.io.File;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -28,31 +29,33 @@ import com.google.api.services.analyticsreporting.v4.model.MetricHeaderEntry;
 import com.google.api.services.analyticsreporting.v4.model.Report;
 import com.google.api.services.analyticsreporting.v4.model.ReportRequest;
 import com.google.api.services.analyticsreporting.v4.model.ReportRow;
-import org.jumao.google.analytics.entity.TargetHourVo;
+import org.jumao.google.analytics.constants.Key;
+import org.jumao.google.analytics.entity.HbasePo;
 import org.jumao.google.analytics.utils.CalendarUtils;
-import org.jumao.google.analytics.utils.DLOG;
 import org.jumao.google.analytics.utils.DateUtils;
+import org.jumao.google.analytics.utils.PlatformUtil;
 
 
-public class HelloAnalyticsReporting {
+public class JumoreAnalyticsReporting {
 
-    private static final String APPLICATION_NAME = "Hello Analytics Reporting";
+    private static final SimpleDateFormat HBASE_NO_HOUR_FORMAT = new SimpleDateFormat("yyyyMMdd");
+    private static final String APPLICATION_NAME = "Jumore Analytics Reporting";
     private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
-    private static final String KEY_FILE_LOCATION = "src/main/resources/MyProject-81155b910cde.p12";
     private static final String SERVICE_ACCOUNT_EMAIL = "id-646@mercurial-craft-170709.iam.gserviceaccount.com";
-    private static final String VIEW_ID = "140502429";
 
 
-    public static void main(String[] args) {
-        try {
-            AnalyticsReporting service = initializeAnalyticsReporting();
+    public static void main(String[] args) throws Exception {
+        HbasePo hbasePo = reqAndGetHbasePo(PlatformUtil.Agriculture);
+        System.err.println(hbasePo);
+    }
 
-            TargetHourVo targetHourVo = new TargetHourVo();
-            GetReportsResponse response = getReport(service, targetHourVo);
-            printResponse(response, targetHourVo);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static HbasePo reqAndGetHbasePo(String platformId) throws Exception {
+        AnalyticsReporting service = initializeAnalyticsReporting();
+
+        HbasePo hbasePo = new HbasePo();
+        hbasePo.setPlatformId(platformId);
+        GetReportsResponse response = getReport(platformId, service, hbasePo);
+        return reqAndGet(response, hbasePo);
     }
 
     /**
@@ -69,7 +72,7 @@ public class HelloAnalyticsReporting {
                 .setTransport(httpTransport)
                 .setJsonFactory(JSON_FACTORY)
                 .setServiceAccountId(SERVICE_ACCOUNT_EMAIL)
-                .setServiceAccountPrivateKeyFromP12File(new File(KEY_FILE_LOCATION))
+                .setServiceAccountPrivateKeyFromP12File(new File(Key.GA_KEY_FILE_LOCATION()))
                 .setServiceAccountScopes(AnalyticsReportingScopes.all())
                 .build();
 
@@ -94,7 +97,8 @@ public class HelloAnalyticsReporting {
      * @return GetReportResponse
      * @throws IOException
      */
-    private static GetReportsResponse getReport(AnalyticsReporting service, TargetHourVo targetHourVo) throws Exception {
+    private static GetReportsResponse getReport(String platformId, AnalyticsReporting service,
+                                                HbasePo hbasePo) throws Exception {
         Calendar nowCal = CalendarUtils.getCalendarBy(new Date());
         int nowHour = nowCal.get(Calendar.HOUR_OF_DAY);
         String targetHour = null;
@@ -107,11 +111,12 @@ public class HelloAnalyticsReporting {
             dateRange.setStartDate(yesterday);//7DaysAgo
             dateRange.setEndDate(yesterday);//today
         } else {
-            targetHour = String.valueOf(nowHour - 1);
-            dateRange.setStartDate("today");//7DaysAgo
-            dateRange.setEndDate("today");//today
+            targetHour = getOneHourAgo(nowHour);
+            dateRange.setStartDate(Key.TODAY());//7DaysAgo
+            dateRange.setEndDate(Key.TODAY());//today
         }
-        targetHourVo.setTargetHour(targetHour);
+        hbasePo.setTargetHour(targetHour);
+        hbasePo.setDate(HBASE_NO_HOUR_FORMAT.format(nowCal.getTime()) + targetHour);
 
         //Create the Dimensions object.
         Dimension dimension1 = new Dimension()
@@ -120,16 +125,16 @@ public class HelloAnalyticsReporting {
         // Create the Metrics object.
         Metric metric1 = new Metric()
                 .setExpression("ga:pageviews") //ga:pageviews  ga:uniquePageviews
-                .setAlias("pv");
+                .setAlias(Key.PV());
 
         Metric metric2 = new Metric()
                 .setExpression("ga:uniquePageviews") //ga:pageviews  ga:uniquePageviews
-                .setAlias("uv");
+                .setAlias(Key.UV());
 
 
         // Create the ReportRequest object.
         ReportRequest request = new ReportRequest()
-                .setViewId(VIEW_ID)
+                .setViewId(PlatformUtil.get(platformId))
                 .setDateRanges(Arrays.asList(dateRange))
                 .setDimensions(Arrays.asList(dimension1))
                 .setMetrics(Arrays.asList(metric1, metric2));
@@ -148,6 +153,16 @@ public class HelloAnalyticsReporting {
         return response;
     }
 
+    private static String getOneHourAgo(int nowHour) {
+        int oneHourAgo = nowHour - 1;
+        String str = String.valueOf(oneHourAgo);
+        if (oneHourAgo < 10) {
+            return "0" + str;
+        } else {
+            return str;
+        }
+    }
+
     private static String getYesterday(Calendar nowCal) throws Exception {
         nowCal.set(Calendar.DAY_OF_MONTH, nowCal.get(Calendar.DAY_OF_MONTH) - 1);
         return DateUtils.formatToNoHourF(nowCal.getTime());
@@ -158,7 +173,7 @@ public class HelloAnalyticsReporting {
      *
      * @param response the Analytics Reporting API V4 response.
      */
-    private static void printResponse(GetReportsResponse response, TargetHourVo targetHourVo) throws Exception {
+    private static HbasePo reqAndGet(GetReportsResponse response, HbasePo hbasePo) throws Exception {
         Report report = response.getReports().get(0);//batchGet 可以同时请求多个 view
         if (report == null) {
             throw new Exception("response.getReports().get(0) return null");
@@ -172,8 +187,7 @@ public class HelloAnalyticsReporting {
             throw new Exception("report.getData().getRows() return null");
         }
 
-        String targetHour = targetHourVo.getTargetHour();
-        String targetVal = null;
+        String targetHour = hbasePo.getTargetHour();
 
         for (ReportRow row : rows) {
             List<String> dimensions = row.getDimensions();
@@ -198,22 +212,24 @@ public class HelloAnalyticsReporting {
                 DateRangeValues values = metrics.get(j);
                 List<String> valList = values.getValues();
                 for (int k = 0; k < valList.size() && k < metricHeaders.size(); k++) {
-                    targetVal = valList.get(k);
-                    if (targetVal != null) {
-                        break;
+                    String metricName = metricHeaders.get(k).getName();
+                    String val = values.getValues().get(k);
+                    if (Key.PV().equals(metricName)) {
+                        hbasePo.setPv(val);
+                    } else if (Key.UV().equals(metricName)) {
+                        hbasePo.setUv(val);
                     }
-                }
-                if (targetVal != null) {
-                    break;
                 }
             }
         }
 
-        if (targetVal == null) {
-            targetVal = "0";
+        if (hbasePo.getPv().isEmpty()) {
+            hbasePo.setPv("0");
         }
-        System.err.println(targetHour);
-        System.err.println(targetVal);
+        if (hbasePo.getUv().isEmpty()) {
+            hbasePo.setUv("0");
+        }
+        return hbasePo;
     }
 
 }

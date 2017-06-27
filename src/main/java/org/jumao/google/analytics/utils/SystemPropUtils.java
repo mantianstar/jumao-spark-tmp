@@ -24,7 +24,7 @@ public class SystemPropUtils {
 		InputStream input = null;
 		BufferedReader reader = null;
 		try {
-			String confPath = Key.CONF_HDFS_PATH();
+			String confPath = Key.CONF_PATH();
 			if (confPath.startsWith("hdfs")) {
 				input = HDFSUtils.instance().open(new Path(confPath));
 			} else {
@@ -35,7 +35,7 @@ public class SystemPropUtils {
 			prop.load(reader);
 		} catch (Exception e) {
 			e.printStackTrace();
-			DLOG.error("Failed to load config from '" + Key.CONF_HDFS_PATH()
+			DLOG.error("Failed to load config from '" + Key.CONF_PATH()
 					+ "', cause:" + e.getMessage());
 		} finally {
 			IOUtils.closeQuietly(input);
