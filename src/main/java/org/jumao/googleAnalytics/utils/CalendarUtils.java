@@ -1,4 +1,4 @@
-package org.jumao.google.analytics.utils;
+package org.jumao.googleAnalytics.utils;
 
 import java.util.Calendar;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package org.jumao.google.analytics.entity;
+package org.jumao.googleAnalytics.entity;
 
 public class HbasePo {
 

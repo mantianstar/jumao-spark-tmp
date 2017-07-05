@@ -1,6 +1,7 @@
-package org.jumao.google.analytics.constants
+package org.jumao.googleAnalytics.constants
 
 import org.jumao.google.analytics.utils.SystemPropUtils
+import org.jumao.googleAnalytics.utils.SystemPropUtils
 
 
 object Key {

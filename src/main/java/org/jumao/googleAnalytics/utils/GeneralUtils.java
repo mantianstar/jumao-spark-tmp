@@ -1,4 +1,4 @@
-package org.jumao.google.analytics.utils;
+package org.jumao.googleAnalytics.utils;
 
 /**
  * Created by kartty on 17-4-11.

@@ -1,4 +1,4 @@
-package org.jumao.google.analytics.utils;
+package org.jumao.googleAnalytics.utils;
 
 import java.util.HashMap;
 import java.util.Map;

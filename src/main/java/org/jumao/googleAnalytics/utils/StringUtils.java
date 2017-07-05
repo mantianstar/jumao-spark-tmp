@@ -1,4 +1,4 @@
-package org.jumao.google.analytics.utils;
+package org.jumao.googleAnalytics.utils;
 
 import org.apache.commons.io.IOUtils;
 import org.codehaus.jettison.json.JSONException;

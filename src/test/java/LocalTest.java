@@ -1,6 +1,6 @@
 import org.apache.commons.io.IOUtils;
-import org.jumao.google.analytics.utils.CalendarUtils;
-import org.jumao.google.analytics.utils.DateUtils;
+import org.jumao.googleAnalytics.utils.CalendarUtils;
+import org.jumao.googleAnalytics.utils.DateUtils;
 import sun.nio.ch.IOUtil;
 
 import java.net.MalformedURLException;

@@ -1,9 +1,9 @@
-package org.jumao.google.analytics.utils
+package org.jumao.googleAnalytics.utils
 
 import org.apache.hadoop.hbase.HBaseConfiguration
 import org.apache.hadoop.hbase.mapred.TableOutputFormat
 import org.apache.hadoop.mapred.JobConf
-import org.jumao.google.analytics.constants.Key
+import org.jumao.googleAnalytics.constants.Key
 
 
 object HbaseUtils {

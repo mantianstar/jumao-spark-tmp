@@ -1,8 +1,8 @@
-package org.jumao.google.analytics.utils;
+package org.jumao.googleAnalytics.utils;
 
 
 
-import org.jumao.google.analytics.exception.ParamErrorException;
+import org.jumao.googleAnalytics.exception.ParamErrorException;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;

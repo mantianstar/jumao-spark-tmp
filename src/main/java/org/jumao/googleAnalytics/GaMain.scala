@@ -1,10 +1,13 @@
-package org.jumao.google.analytics
+package org.jumao.googleAnalytics
 
 import org.apache.spark.rdd.PairRDDFunctions
 import org.apache.spark.sql.SparkSession
 import org.jumao.google.analytics.constants.Key
 import org.jumao.google.analytics.service.GaBasic
 import org.jumao.google.analytics.utils.{HbaseUtils, SystemPropUtils}
+import org.jumao.googleAnalytics.constants.Key
+import org.jumao.googleAnalytics.service.GaBasic
+import org.jumao.googleAnalytics.utils.{HbaseUtils, SystemPropUtils}
 
 
 

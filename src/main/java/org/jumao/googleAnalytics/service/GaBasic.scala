@@ -1,4 +1,4 @@
-package org.jumao.google.analytics.service
+package org.jumao.googleAnalytics.service
 
 import org.apache.hadoop.hbase.client.Put
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable
@@ -6,6 +6,9 @@ import org.apache.hadoop.hbase.util.Bytes
 import org.jumao.google.analytics.constants.Key
 import org.jumao.google.analytics.entity.HbasePo
 import org.jumao.google.analytics.utils.PlatformUtil
+import org.jumao.googleAnalytics.constants.Key
+import org.jumao.googleAnalytics.entity.HbasePo
+import org.jumao.googleAnalytics.utils.PlatformUtil
 
 import scala.collection.mutable.ArrayBuffer
 

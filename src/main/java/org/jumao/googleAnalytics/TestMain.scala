@@ -1,4 +1,4 @@
-package org.jumao.google.analytics
+package org.jumao.googleAnalytics
 
 import java.io.File
 import java.util
@@ -9,6 +9,9 @@ import org.jumao.google.analytics.constants.Key
 import org.jumao.google.analytics.constants.Key.HADOOP_CORE_SITE_CONF_PROP
 import org.jumao.google.analytics.service.JumoreAnalytics
 import org.jumao.google.analytics.utils.{DLOG, GeneralUtils, SystemPropUtils}
+import org.jumao.googleAnalytics.constants.Key
+import org.jumao.googleAnalytics.service.JumoreAnalytics
+import org.jumao.googleAnalytics.utils.{DLOG, GeneralUtils}
 import org.slf4j.LoggerFactory
 
 /**

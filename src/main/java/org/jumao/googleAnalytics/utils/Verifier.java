@@ -1,4 +1,4 @@
-package org.jumao.google.analytics.utils;
+package org.jumao.googleAnalytics.utils;
 
 
 public class Verifier {

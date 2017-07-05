@@ -1,4 +1,4 @@
-package org.jumao.google.analytics.service;
+package org.jumao.googleAnalytics.service;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
@@ -30,10 +30,13 @@ import com.google.api.services.analyticsreporting.v4.model.Report;
 import com.google.api.services.analyticsreporting.v4.model.ReportRequest;
 import com.google.api.services.analyticsreporting.v4.model.ReportRow;
 import org.jumao.google.analytics.constants.Key;
-import org.jumao.google.analytics.entity.HbasePo;
-import org.jumao.google.analytics.utils.CalendarUtils;
-import org.jumao.google.analytics.utils.DateUtils;
-import org.jumao.google.analytics.utils.PlatformUtil;
+import org.jumao.googleAnalytics.entity.HbasePo;
+import org.jumao.googleAnalytics.utils.CalendarUtils;
+import org.jumao.googleAnalytics.utils.DateUtils;
+import org.jumao.googleAnalytics.utils.PlatformUtil;
+import org.jumao.googleAnalytics.utils.CalendarUtils;
+import org.jumao.googleAnalytics.utils.DateUtils;
+import org.jumao.googleAnalytics.utils.PlatformUtil;
 
 
 /**

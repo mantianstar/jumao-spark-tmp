@@ -1,4 +1,4 @@
-package org.jumao.google.analytics.utils
+package org.jumao.googleAnalytics.utils
 
 import java.io.File
 import java.nio.charset.Charset
@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util
 
 import com.google.common.io.Files
-import org.jumao.google.analytics.constants.Key
+import org.jumao.googleAnalytics.constants.Key
 
 /**
   * driver log
