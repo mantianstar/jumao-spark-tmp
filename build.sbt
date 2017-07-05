@@ -1,4 +1,4 @@
-name := "export-ga"
+name := "jumao-spark"
 
 version := "1.0"
 

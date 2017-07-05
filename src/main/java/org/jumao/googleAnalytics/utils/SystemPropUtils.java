@@ -2,7 +2,6 @@ package org.jumao.googleAnalytics.utils;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.fs.Path;
-import org.jumao.google.analytics.constants.Key;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

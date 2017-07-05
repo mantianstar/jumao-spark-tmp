@@ -1,6 +1,5 @@
 package org.jumao.googleAnalytics.constants
 
-import org.jumao.google.analytics.utils.SystemPropUtils
 import org.jumao.googleAnalytics.utils.SystemPropUtils
 
 
