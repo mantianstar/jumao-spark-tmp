@@ -1,4 +1,4 @@
-name := "ExportGA"
+name := "export-ga"
 
 version := "1.0"
 
