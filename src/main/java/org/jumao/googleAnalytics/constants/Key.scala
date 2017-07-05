@@ -5,8 +5,6 @@ import org.jumao.googleAnalytics.utils.SystemPropUtils
 
 object Key {
 
-    val APP_NAME = "export-jumore-en-from-ga"
-
     private val LOG_FILE_PATH_PROP = "log.file.path"
 
     private val HADOOP_CORE_SITE_CONF_PROP = "hadoop.core.site.conf"

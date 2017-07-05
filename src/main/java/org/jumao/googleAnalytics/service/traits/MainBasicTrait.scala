@@ -1,4 +1,4 @@
-package org.jumao.googleAnalytics.service.`trait`
+package org.jumao.googleAnalytics.service.traits
 
 import org.jumao.googleAnalytics.utils.SystemPropUtils
 

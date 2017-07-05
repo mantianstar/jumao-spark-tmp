@@ -3,7 +3,7 @@ package org.jumao.googleAnalytics
 import org.apache.spark.rdd.PairRDDFunctions
 import org.apache.spark.sql.SparkSession
 import org.jumao.googleAnalytics.constants.Key
-import org.jumao.googleAnalytics.service.`trait`.MainBasicTrait
+import org.jumao.googleAnalytics.service.traits.MainBasicTrait
 import org.jumao.googleAnalytics.service.basic.GaBasic
 import org.jumao.googleAnalytics.utils.{HbaseUtils, SystemPropUtils}
 
@@ -14,10 +14,12 @@ import org.jumao.googleAnalytics.utils.{HbaseUtils, SystemPropUtils}
   */
 object GaMain extends GaBasic with MainBasicTrait {
 
+    val APP_NAME = "export-jumore-en-from-ga"
+
     def main(args: Array[String]): Unit = {
         checkAndLoadConfPath(args)
 
-        val spark = SparkSession.builder.appName(Key.APP_NAME)
+        val spark = SparkSession.builder.appName(APP_NAME)
                 .master(Key.SPARK_MASTER).getOrCreate()
 
         val platformIdsRDD = spark.sparkContext.parallelize(getPlatformIds())
