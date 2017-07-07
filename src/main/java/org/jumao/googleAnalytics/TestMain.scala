@@ -20,7 +20,7 @@ object TestMain {
 
     def main(args: Array[String]): Unit = {
         val conf = new SparkConf()
-                .setAppName(Key.APP_NAME)
+                .setAppName("TestMain")
                 .setMaster(Key.SPARK_MASTER)
         val sparkContext = SparkContext.getOrCreate(conf)
 

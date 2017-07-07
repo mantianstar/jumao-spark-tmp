@@ -1,6 +1,7 @@
 import org.apache.commons.io.IOUtils;
 import org.jumao.googleAnalytics.utils.CalendarUtils;
 import org.jumao.googleAnalytics.utils.DateUtils;
+import org.jumao.googleAnalytics.utils.DigestUtils;
 import sun.nio.ch.IOUtil;
 
 import java.net.MalformedURLException;
@@ -21,8 +22,12 @@ public class LocalTest {
 //        int nowHour = nowCal.get(Calendar.HOUR_OF_DAY);
 //        System.err.println(nowHour);
 
+//        System.err.println(HBASE_NO_HOUR_FORMAT.format(new Date()));
 
-        System.err.println(HBASE_NO_HOUR_FORMAT.format(new Date()));
+//        String str = "=?utf-8?B?QlVHICMyMDUzMiDjgJDlk4HniYzppoYt5Lit5Y+w44CR55u4?=? =?utf-8?B?5YaM566h55CGIOaWsOWinuaPkOekuuacieemgeeUqOivje+8jOS9huaYrw==?=? =?utf-8?B?5rKh5pyJ5qCH5piOIOemgeeUqOivjeaYr+WTquS4qiAtI";
+        String str = "=?utf-8?B?QlVHICMyMDUzMiDjgJDlk4HniYzppoYt5Lit5Y+w44CR55u4?=?";
+        String decode = DigestUtils.decodeBase64(str);
+        System.err.println(decode);
     }
 
 

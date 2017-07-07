@@ -20,6 +20,8 @@ object RecommendationExample {
 //                .master("local[4]")
                 .getOrCreate()
 
+        import spark.implicits._
+
 //        val csvPath = "E:\\tmp\\ml-20m\\ratings.csv"
         val csvPath = "hdfs://nn1:8020/tmp/spark/ratings.csv"
         val data = spark.read.csv(csvPath)
