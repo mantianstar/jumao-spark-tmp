@@ -14,8 +14,8 @@ import org.jumao.googleAnalytics.constants.Key
 object DLOG {
 
     val minDataFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-    var logFile = new File(Key.LOG_FILE_PATH)
-    var errLogFile = new File(Key.LOG_FILE_PATH + ".error")
+    var logFile = new File(Key.DLOG_FILE_PATH)
+    var errLogFile = new File(Key.DLOG_FILE_PATH + ".error")
     val NEW_LINE = "\n"
 
 
@@ -25,7 +25,7 @@ object DLOG {
         } catch {
             case e: Exception => {
                 e.printStackTrace()
-                logFile = new File(Key.LOG_FILE_PATH)
+                logFile = new File(Key.DLOG_FILE_PATH)
             }
         }
     }
@@ -36,7 +36,7 @@ object DLOG {
         } catch {
             case e: Exception => {
                 e.printStackTrace()
-                errLogFile = new File(Key.LOG_FILE_PATH + ".error")
+                errLogFile = new File(Key.DLOG_FILE_PATH + ".error")
             }
         }
     }

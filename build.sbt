@@ -16,6 +16,7 @@ libraryDependencies ++= Seq(
     "org.apache.spark" % s"spark-core_$scalaVer" % sparkVer,
     "org.apache.spark" % s"spark-sql_$scalaVer" % sparkVer,
     "org.apache.spark" % s"spark-yarn_$scalaVer" % sparkVer,
+    "org.apache.spark" % s"spark-mllib_$scalaVer" % sparkVer,
     "org.apache.hbase" % "hbase-client" % hbaseVer,
     "org.apache.hbase" % "hbase-common" % hbaseVer,
     "org.apache.hbase" % "hbase-server" % hbaseVer,

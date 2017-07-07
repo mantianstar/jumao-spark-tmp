@@ -16,6 +16,7 @@ object GaMain extends GaBasic with MainBasicTrait {
 
     val APP_NAME = "export-jumore-en-from-ga"
 
+
     def main(args: Array[String]): Unit = {
         checkAndLoadConfPath(args)
 
@@ -30,5 +31,6 @@ object GaMain extends GaBasic with MainBasicTrait {
 
         spark.stop()
     }
+
 
 }
