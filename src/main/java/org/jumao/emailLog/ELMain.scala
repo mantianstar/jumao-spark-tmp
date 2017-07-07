@@ -8,7 +8,8 @@ import org.jumao.googleAnalytics.service.traits.MainBasicTrait
 import org.jumao.googleAnalytics.utils.SystemPropUtils
 
 /**
-  **/
+  * 部分 base64 解码出来末尾有乱码，手动解码一样
+  */
 object ELMain extends ELBasic with MainBasicTrait {
 
     val APP_NAME = "email-log-analysis"
@@ -20,15 +21,16 @@ object ELMain extends ELBasic with MainBasicTrait {
                 .master(Key.SPARK_MASTER).getOrCreate()
         import spark.implicits._
 
-        val ds = spark.read.textFile(Key.EMAIL_LOG_LOCATION)
+        val originDS = spark.read.textFile(Key.EMAIL_LOG_LOCATION)
+        val dealedDS = originDS.map(parseLineToEmailPo(_)).filter(_.id.nonEmpty)
+        val idPoRDD = dealedDS.rdd.keyBy(_.id).aggregateByKey(EmailPo.empty())(aggSeqOrCombOp, aggSeqOrCombOp)
 
-        val ds2 = ds.map(parseLineToEmailPo(_))
+        idPoRDD.collect().foreach(tp => {
+            val po = tp._2
+            println(po)
+        })
 
-//        ds.map(line => {
-//
-//        })
-
-
+        spark.stop()
     }
 
 }

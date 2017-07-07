@@ -5,6 +5,7 @@ import org.jumao.googleAnalytics.utils.SystemPropUtils
 
 object Key {
 
+
     private val LOG_FILE_PATH_PROP = "log.file.path"
     private val EMAIL_LOG_LOCATION_PROP = "email.log.location"
 
@@ -15,7 +16,7 @@ object Key {
 
     val SPARK_MASTER = SystemPropUtils.get("spark.master", "yarn")
     val DLOG_FILE_PATH = SystemPropUtils.get(LOG_FILE_PATH_PROP, "/tmp/spark/app.log")
-    val EMAIL_LOG_LOCATION = SystemPropUtils.get(EMAIL_LOG_LOCATION_PROP, "/tmp/spark/MyProject-81155b910cde.p12")
+    val EMAIL_LOG_LOCATION = SystemPropUtils.get(EMAIL_LOG_LOCATION_PROP, "/tmp/spark/emaillog.txt")
 
     val HADOOP_CORE_SITE_CONF = SystemPropUtils.get(HADOOP_CORE_SITE_CONF_PROP, "/opt/cloudera/parcels/CDH/lib/hadoop/etc/hadoop/core-site.xml")
     val HDFS_SITE_CONF = SystemPropUtils.get(HDFS_SITE_CONF_PROP, "/opt/cloudera/parcels/CDH/lib/hadoop/etc/hadoop/hdfs-site.xml")
@@ -45,5 +46,11 @@ object Key {
     val CF_INFO = "info"
     val DATE = "date"
     val PLATFORM_ID = "platform_id"
+    val FROM = "from"
+    val TO = "to"
+    val RELAY = "relay"
+    val STATUS = "status"
+    val REMOVED = "removed"
+
 
 }

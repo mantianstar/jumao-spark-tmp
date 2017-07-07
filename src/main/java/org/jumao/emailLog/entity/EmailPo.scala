@@ -2,7 +2,8 @@ package org.jumao.emailLog.entity
 
 /**
   **/
-case class EmailPo(id: String, subject: String, from: String, to: String, relay: String, status: String, isRemoved: Boolean) {
+case class EmailPo(var id: String, var subject: String, var from: String,
+                   var to: String, var relay: String, var status: String, var isRemoved: Boolean = false) {
 
 
 }
