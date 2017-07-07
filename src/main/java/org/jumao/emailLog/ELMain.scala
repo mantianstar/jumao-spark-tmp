@@ -23,7 +23,8 @@ object ELMain extends ELBasic with MainBasicTrait {
 
         val originDS = spark.read.textFile(Key.EMAIL_LOG_LOCATION)
         val dealedDS = originDS.map(parseLineToEmailPo(_)).filter(_.id.nonEmpty)
-        val idPoRDD = dealedDS.rdd.keyBy(_.id).aggregateByKey(EmailPo.empty())(aggSeqOrCombOp, aggSeqOrCombOp)
+        val empty = EmailPo.empty() //official recommend
+        val idPoRDD = dealedDS.rdd.keyBy(_.id).aggregateByKey(empty)(aggSeqOrCombOp, aggSeqOrCombOp)
 
         idPoRDD.collect().foreach(tp => {
             val po = tp._2
