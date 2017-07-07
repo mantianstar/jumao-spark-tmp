@@ -43,28 +43,33 @@ class ELBasic extends ELHelper {
     }
 
 
-
-
-    def aggSeqOrCombOp(emptyOrOtherU: EmailPo, toRet: EmailPo): EmailPo = {
-        if (toRet.subject.isEmpty) {
-            toRet.subject = emptyOrOtherU.subject
+    /**
+      * 此处聚合算子的 seqOp 和 combOp 可以是同一个
+      *
+      * @param emptyOrOtherU  作为 zeroValue 的 “空”EmailPo 或 要合并到 retU 的另一个 EmailPo
+      * @param retU  要 return 的 EmailPo
+      * @return 合并后的 EmailPo
+      */
+    def aggSeqOrCombOp(emptyOrOtherU: EmailPo, retU: EmailPo): EmailPo = {
+        if (retU.subject.isEmpty) {
+            retU.subject = emptyOrOtherU.subject
         }
-        if (toRet.from.isEmpty) {
-            toRet.from = emptyOrOtherU.from
+        if (retU.from.isEmpty) {
+            retU.from = emptyOrOtherU.from
         }
-        if (toRet.to.isEmpty) {
-            toRet.to = emptyOrOtherU.to
+        if (retU.to.isEmpty) {
+            retU.to = emptyOrOtherU.to
         }
-        if (toRet.relay.isEmpty) {
-            toRet.relay = emptyOrOtherU.relay
+        if (retU.relay.isEmpty) {
+            retU.relay = emptyOrOtherU.relay
         }
-        if (toRet.status.isEmpty) {
-            toRet.status = emptyOrOtherU.status
+        if (retU.status.isEmpty) {
+            retU.status = emptyOrOtherU.status
         }
-        if (!toRet.isRemoved) {
-            toRet.isRemoved = emptyOrOtherU.isRemoved
+        if (!retU.isRemoved) {
+            retU.isRemoved = emptyOrOtherU.isRemoved
         }
-        return toRet
+        return retU
     }
 
 }
