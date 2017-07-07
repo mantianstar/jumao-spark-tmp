@@ -1,6 +1,5 @@
 package org.jumao.spark.googleAnalytics.service.traits
 
-import org.jumao.googleAnalytics.utils.SystemPropUtils
 import org.jumao.spark.googleAnalytics.utils.SystemPropUtils
 
 /**

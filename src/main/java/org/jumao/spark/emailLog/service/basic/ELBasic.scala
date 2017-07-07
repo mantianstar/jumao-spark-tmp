@@ -1,9 +1,5 @@
 package org.jumao.spark.emailLog.service.basic
 
-import org.jumao.emailLog.ELMain.uselessInIdPos
-import org.jumao.emailLog.entity.EmailPo
-import org.jumao.emailLog.service.helper.ELHelper
-import org.jumao.googleAnalytics.constants.Key
 import org.jumao.spark.emailLog.entity.EmailPo
 import org.jumao.spark.emailLog.service.helper.ELHelper
 import org.jumao.spark.googleAnalytics.constants.Key

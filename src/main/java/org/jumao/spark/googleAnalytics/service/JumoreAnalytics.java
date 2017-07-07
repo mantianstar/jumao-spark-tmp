@@ -29,7 +29,7 @@ import com.google.api.services.analyticsreporting.v4.model.MetricHeaderEntry;
 import com.google.api.services.analyticsreporting.v4.model.Report;
 import com.google.api.services.analyticsreporting.v4.model.ReportRequest;
 import com.google.api.services.analyticsreporting.v4.model.ReportRow;
-import org.jumao.googleAnalytics.constants.Key;
+import org.jumao.spark.googleAnalytics.constants.Key;
 import org.jumao.spark.googleAnalytics.entity.HbasePo;
 import org.jumao.spark.googleAnalytics.utils.CalendarUtils;
 import org.jumao.spark.googleAnalytics.utils.DateUtils;

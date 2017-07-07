@@ -2,10 +2,6 @@ package org.jumao.spark.googleAnalytics
 
 import org.apache.spark.rdd.PairRDDFunctions
 import org.apache.spark.sql.SparkSession
-import org.jumao.googleAnalytics.constants.Key
-import org.jumao.googleAnalytics.service.traits.MainBasicTrait
-import org.jumao.googleAnalytics.service.basic.GaBasic
-import org.jumao.googleAnalytics.utils.{HbaseUtils, SystemPropUtils}
 import org.jumao.spark.googleAnalytics.constants.Key
 import org.jumao.spark.googleAnalytics.service.basic.GaBasic
 import org.jumao.spark.googleAnalytics.service.traits.MainBasicTrait

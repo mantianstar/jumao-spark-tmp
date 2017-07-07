@@ -1,11 +1,6 @@
 package org.jumao.spark.emailLog
 
 import org.apache.spark.sql.SparkSession
-import org.jumao.emailLog.entity.EmailPo
-import org.jumao.emailLog.service.basic.ELBasic
-import org.jumao.googleAnalytics.constants.Key
-import org.jumao.googleAnalytics.service.traits.MainBasicTrait
-import org.jumao.googleAnalytics.utils.SystemPropUtils
 import org.jumao.spark.emailLog.entity.EmailPo
 import org.jumao.spark.emailLog.service.basic.ELBasic
 import org.jumao.spark.googleAnalytics.constants.Key

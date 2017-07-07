@@ -4,7 +4,6 @@ import java.io.{BufferedInputStream, FileInputStream}
 
 import org.apache.hadoop.conf._
 import org.apache.hadoop.fs._
-import org.jumao.googleAnalytics.constants.Key
 import org.jumao.spark.googleAnalytics.constants.Key
 
 /**

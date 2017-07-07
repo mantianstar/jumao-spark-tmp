@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat
 import java.util
 
 import com.google.common.io.Files
-import org.jumao.googleAnalytics.constants.Key
 import org.jumao.spark.googleAnalytics.constants.Key
 
 /**

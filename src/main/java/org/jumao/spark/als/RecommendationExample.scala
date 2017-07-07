@@ -4,7 +4,6 @@ import org.apache.spark.mllib.recommendation.ALS
 import org.apache.spark.mllib.recommendation.Rating
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
-import org.jumao.googleAnalytics.utils.DLOG
 import org.jumao.spark.googleAnalytics.utils.DLOG
 
 

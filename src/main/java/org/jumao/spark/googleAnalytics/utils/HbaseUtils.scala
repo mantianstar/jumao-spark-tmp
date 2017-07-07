@@ -3,7 +3,6 @@ package org.jumao.spark.googleAnalytics.utils
 import org.apache.hadoop.hbase.HBaseConfiguration
 import org.apache.hadoop.hbase.mapred.TableOutputFormat
 import org.apache.hadoop.mapred.JobConf
-import org.jumao.googleAnalytics.constants.Key
 import org.jumao.spark.googleAnalytics.constants.Key
 
 

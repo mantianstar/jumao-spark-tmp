@@ -3,15 +3,10 @@ package org.jumao.spark.googleAnalytics
 import java.io.File
 import java.util
 
-import org.apache.hadoop.fs.Path
 import org.apache.spark.{SparkConf, SparkContext}
-import org.jumao.googleAnalytics.constants.Key
-import org.jumao.googleAnalytics.service.JumoreAnalytics
-import org.jumao.googleAnalytics.utils.{DLOG, GeneralUtils}
 import org.jumao.spark.googleAnalytics.constants.Key
 import org.jumao.spark.googleAnalytics.service.JumoreAnalytics
 import org.jumao.spark.googleAnalytics.utils.{DLOG, GeneralUtils}
-import org.slf4j.LoggerFactory
 
 /**
   * Created by kartty on 17-3-2.
