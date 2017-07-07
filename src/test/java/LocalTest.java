@@ -1,14 +1,6 @@
-import org.apache.commons.io.IOUtils;
-import org.jumao.googleAnalytics.utils.CalendarUtils;
-import org.jumao.googleAnalytics.utils.DateUtils;
-import org.jumao.googleAnalytics.utils.DigestUtils;
-import sun.nio.ch.IOUtil;
+import org.jumao.spark.googleAnalytics.utils.DigestUtils;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 public class LocalTest {
 
