@@ -5,7 +5,7 @@ import java.util
 
 import org.apache.spark.{SparkConf, SparkContext}
 import org.jumao.spark.googleAnalytics.constants.Key
-import org.jumao.spark.googleAnalytics.service.JumoreAnalytics
+import org.jumao.spark.googleAnalytics.service.GoogleAnalysisJ
 import org.jumao.spark.googleAnalytics.utils.{DLOG, GeneralUtils}
 
 /**
@@ -51,8 +51,8 @@ object TestMain {
             sb.append("\"\":"+directory2.getAbsolutePath()).append(DLOG.NEW_LINE)
 
             try {
-                sb.append(classOf[JumoreAnalytics].getResource("/").toString).append(DLOG.NEW_LINE)
-                sb.append(classOf[JumoreAnalytics].getResource("").toString).append(DLOG.NEW_LINE)
+                sb.append(classOf[GoogleAnalysisJ].getResource("/").toString).append(DLOG.NEW_LINE)
+                sb.append(classOf[GoogleAnalysisJ].getResource("").toString).append(DLOG.NEW_LINE)
             } catch {
                 case e: Exception => sb.append(DLOG.NEW_LINE).append("error:").append(GeneralUtils.getAllStackTraceFromExp(e))
             }

@@ -5,7 +5,7 @@ import org.apache.hadoop.hbase.io.ImmutableBytesWritable
 import org.apache.hadoop.hbase.util.Bytes
 import org.jumao.spark.googleAnalytics.constants.Key
 import org.jumao.spark.googleAnalytics.entity.HbasePo
-import org.jumao.spark.googleAnalytics.service.JumoreAnalytics
+import org.jumao.spark.googleAnalytics.service.GoogleAnalysisJ
 import org.jumao.spark.googleAnalytics.utils.PlatformUtil
 
 import scala.collection.mutable.ArrayBuffer
@@ -53,7 +53,7 @@ class GaBasic {
         val hbasePoAb = new ArrayBuffer[HbasePo](platformIds.length)
 
         for (id <- platformIds) {
-            hbasePoAb += JumoreAnalytics.reqAndGetHbasePo(id)
+            hbasePoAb += GoogleAnalysisJ.reqAndGetHbasePo(id)
         }
         hbasePoAb.toIterator
     }

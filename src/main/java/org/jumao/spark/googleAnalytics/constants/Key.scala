@@ -34,6 +34,11 @@ object Key {
 
     val PV = "pv"
     val UV = "uv"
+    val BOUNCE_RATE = "bounceRate"
+    val AVG_SESSION_DUR = "avgSessionDur"
+    val COHORT_RETENTION_RATE = "cohortRetentionRate"
+    val USERS = "users"
+    val NEW_USERS = "newUsers"
     val TODAY = "today"
     val VIEW_ID = "viewId"
 

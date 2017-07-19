@@ -1,5 +1,7 @@
+import org.apache.commons.io.IOUtils;
 import org.jumao.spark.googleAnalytics.utils.DigestUtils;
 
+import java.net.URL;
 import java.text.SimpleDateFormat;
 
 public class LocalTest {
@@ -7,8 +9,8 @@ public class LocalTest {
     private static final SimpleDateFormat HBASE_NO_HOUR_FORMAT = new SimpleDateFormat("yyyyMMdd");
 
     public static void main(String[] args) throws Exception {
-//        URL url = new URL("https://www.google.com.hk/");
-//        System.err.println(IOUtils.toString(url.openStream(), "utf8"));
+        URL url = new URL("https://www.google.com.hk/");
+        System.err.println(IOUtils.toString(url.openStream(), "utf8"));
 
 //        Calendar nowCal = CalendarUtils.getCalendarBy("2017-6-25 25:59:58");
 //        int nowHour = nowCal.get(Calendar.HOUR_OF_DAY);
@@ -29,7 +31,7 @@ public class LocalTest {
 //            System.err.println(decode);
 //        }
 
-        System.err.println(DigestUtils.decodeBase64(str));
+//        System.err.println(DigestUtils.decodeBase64(str));
     }
 
 
