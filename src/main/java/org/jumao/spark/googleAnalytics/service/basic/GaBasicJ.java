@@ -14,11 +14,13 @@ import com.google.api.services.analyticsreporting.v4.model.GetReportsRequest;
 import com.google.api.services.analyticsreporting.v4.model.GetReportsResponse;
 import com.google.api.services.analyticsreporting.v4.model.MetricHeaderEntry;
 import com.google.api.services.analyticsreporting.v4.model.Report;
+import com.google.api.services.analyticsreporting.v4.model.ReportRequest;
 import com.google.api.services.analyticsreporting.v4.model.ReportRow;
 import org.jumao.spark.googleAnalytics.constants.Key;
 import org.jumao.spark.googleAnalytics.entity.HbasePo;
 import org.jumao.spark.googleAnalytics.service.helper.GaHelperJ;
 import org.jumao.spark.googleAnalytics.utils.CalendarUtils;
+import org.jumao.spark.googleAnalytics.utils.enums.GaReqEnums;
 
 import java.io.File;
 import java.io.IOException;
@@ -113,30 +115,36 @@ public class GaBasicJ extends GaHelperJ {
     }
 
 
-    protected static GetReportsResponse getRetentionRateRep(String platformId, AnalyticsReporting service) throws Exception {
-        Calendar nowCal = CalendarUtils.getCalendarBy(new Date());
+    protected static GetReportsResponse getResponse(String platformId, AnalyticsReporting service, GaReqEnums gaReqEnum) throws Exception {
+        ReportRequest reportRequest = null;
+        switch (gaReqEnum) {
+            case RETENTION_RATE:
+                reportRequest = getRetentionRateReq(platformId);
+                break;
+            case SEARCH_KEY_WORD:
+                reportRequest = getSearchKeywordReq(platformId);
+                break;
+            case COUNTRY:
+                reportRequest = getCountryReq(platformId);
+                break;
+            case SOURCE_MEDIUM:
+                reportRequest = getSourceMediumReq(platformId);
+                break;
+            case ENTRANCES_PAGE:
+                reportRequest = getEntrancesPageReq(platformId);
+                break;
+            case ALL_HOST_NAME:
+                reportRequest = getAllHostNameReq(platformId);
+                break;
+            case BEHAVIOR_FLOW:
+                reportRequest = getBehaviorFlowReq(platformId);
+                break;
+            default:
+                throw new Exception("unknown gaReqEnum:" + gaReqEnum);
+        }
+
         GetReportsRequest getReport = new GetReportsRequest()
-                .setReportRequests(Arrays.asList(getRetentionRateReq(platformId)));
-
-        GetReportsResponse response = service.reports().batchGet(getReport).execute();
-        return response;
-    }
-
-
-    protected static GetReportsResponse getSearchKeywordRep(String platformId, AnalyticsReporting service) throws Exception {
-        Calendar nowCal = CalendarUtils.getCalendarBy(new Date());
-        GetReportsRequest getReport = new GetReportsRequest()
-                .setReportRequests(Arrays.asList(getSearchKeywordReq(platformId)));
-
-        GetReportsResponse response = service.reports().batchGet(getReport).execute();
-        return response;
-    }
-
-
-    protected static GetReportsResponse getCountryRep(String platformId, AnalyticsReporting service) throws IOException {
-        Calendar nowCal = CalendarUtils.getCalendarBy(new Date());
-        GetReportsRequest getReport = new GetReportsRequest()
-                .setReportRequests(Arrays.asList(getCountryReq(platformId)));
+                .setReportRequests(Arrays.asList(reportRequest));
 
         GetReportsResponse response = service.reports().batchGet(getReport).execute();
         return response;
@@ -225,6 +233,9 @@ public class GaBasicJ extends GaHelperJ {
             for (int i = 0; i < dimensionHeaders.size() && i < dimensions.size(); i++) {
                 String dim = dimensions.get(i);
                 System.out.println();
+//                if (dim.contains("800483")) {
+//                    System.out.println();
+//                }
             }
 
             for (int j = 0; j < metrics.size(); j++) {

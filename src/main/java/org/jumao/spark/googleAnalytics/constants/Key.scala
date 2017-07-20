@@ -34,12 +34,6 @@ object Key {
 
     val PV = "pv"
     val UV = "uv"
-    val BOUNCE_RATE = "bounceRate"
-    val AVG_SESSION_DUR = "avgSessionDur"
-    val COUNTRY = "country"
-    val COHORT_RETENTION_RATE = "cohortRetentionRate"
-    val USERS = "users"
-    val NEW_USERS = "newUsers"
     val TODAY = "today"
     val VIEW_ID = "viewId"
 
@@ -57,6 +51,30 @@ object Key {
     val RELAY = "relay"
     val STATUS = "status"
     val REMOVED = "removed"
+
+    val GA_HOUR = "ga:hour"
+    val GA_SESSIONS = "ga:sessions"
+    val GA_PAGEVIEWS = "ga:pageviews"
+    val GA_UNIQUE_PAGEVIEWS = "ga:uniquePageviews"
+    val GA_BOUNCE_RATE = "ga:bounceRate"
+    val GA_AVG_SESSION_DURATION = "ga:avgSessionDuration"
+    val GA_COUNTRY = "ga:country"
+    val GA_USERS = "ga:users"
+    val GA_NEW_USERS = "ga:newUsers"
+    val GA_COHORT = "ga:cohort"
+    val GA_COHORT_NTH_DAY = "ga:cohortNthDay"
+    val GA_COHORT_ACTIVE_USERS = "ga:cohortActiveUsers"
+    val GA_COHORT_RETENTION_RATE = "ga:cohortRetentionRate"
+    val GA_DATE = "ga:date"
+    val GA_SEARCH_KEYWORD = "ga:searchKeyword"
+    val GA_SEARCH_RESULT_VIEWS = "ga:searchResultViews"
+    val GA_SOURCE_MEDIUM = "ga:sourceMedium"
+    val GA_LANDING_PAGE_PATH = "ga:landingPagePath"
+    val GA_ENTRANCES = "ga:entrances"
+    val GA_HOST_NAME = "ga:hostname"
+    val GA_PAGE_PATH = "ga:pagePath"
+    val GA_PAGE_PATH_LEVEL1 = "ga:pagePathLevel1"
+    val GA_PAGE_PATH_LEVEL2 = "ga:pagePathLevel2"
 
 
 }

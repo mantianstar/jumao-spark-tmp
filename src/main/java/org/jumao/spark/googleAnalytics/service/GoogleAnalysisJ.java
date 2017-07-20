@@ -32,6 +32,7 @@ import org.jumao.spark.googleAnalytics.utils.CalendarUtils;
 import org.jumao.spark.googleAnalytics.utils.DateUtils;
 import org.jumao.spark.googleAnalytics.utils.PlatformUtil;
 import org.jumao.spark.googleAnalytics.utils.SystemPropUtils;
+import org.jumao.spark.googleAnalytics.utils.enums.GaReqEnums;
 
 
 /**
@@ -48,15 +49,27 @@ public class GoogleAnalysisJ extends GaBasicJ {
 //        GetReportsResponse response = getBasicVisitRep(platformId, service, hbasePo);
 //        reqAndGet(response, hbasePo);
 
-//        GetReportsResponse response = getRetentionRateRep(platformId, service);
+//        GetReportsResponse response = getResponse(platformId, service, GaReqEnums.RETENTION_RATE);
 //        parseRetentionRateRep(response);
 
-//        GetReportsResponse response = getSearchKeywordRep(platformId, service);
+//        GetReportsResponse response = getResponse(platformId, service, GaReqEnums.SEARCH_KEY_WORD);
 //        parseRetentionRateRep(response);
 
-        GetReportsResponse response = getCountryRep(platformId, service);
+//        GetReportsResponse response = getResponse(platformId, service, GaReqEnums.COUNTRY);
+//        parseRetentionRateRep(response);
+
+        //过滤 (direct) / (none)来计算来源网站，同时
+//        GetReportsResponse response = getResponse(platformId, service, GaReqEnums.SOURCE_MEDIUM);
+//        parseRetentionRateRep(response);
+
+//        GetReportsResponse response = getResponse(platformId, service, GaReqEnums.ENTRANCES_PAGE);
+//        parseRetentionRateRep(response);
+
+//        GetReportsResponse response = getResponse(platformId, service, GaReqEnums.ALL_HOST_NAME);
+//        parseRetentionRateRep(response);
+
+        GetReportsResponse response = getResponse(platformId, service, GaReqEnums.BEHAVIOR_FLOW);
         parseRetentionRateRep(response);
-
 
         return hbasePo;
     }
