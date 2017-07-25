@@ -4,8 +4,8 @@ import java.io.File
 import java.util
 
 import org.apache.spark.{SparkConf, SparkContext}
-import org.jumao.spark.googleAnalytics.constants.Key
 import org.jumao.spark.googleAnalytics.service.GoogleAnalysisJ
+import org.jumao.spark.googleAnalytics.utils.constants.Key
 import org.jumao.spark.googleAnalytics.utils.{DLOG, GeneralUtils}
 
 /**

@@ -3,8 +3,8 @@ package org.jumao.spark.emailLog
 import org.apache.spark.sql.SparkSession
 import org.jumao.spark.emailLog.entity.EmailPo
 import org.jumao.spark.emailLog.service.basic.ELBasic
-import org.jumao.spark.googleAnalytics.constants.Key
 import org.jumao.spark.googleAnalytics.service.traits.MainBasicTrait
+import org.jumao.spark.googleAnalytics.utils.constants.Key
 
 /**
   * 部分 base64 解码出来末尾有乱码，手动解码一样

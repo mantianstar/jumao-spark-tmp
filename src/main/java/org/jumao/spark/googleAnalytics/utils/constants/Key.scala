@@ -1,4 +1,4 @@
-package org.jumao.spark.googleAnalytics.constants
+package org.jumao.spark.googleAnalytics.utils.constants
 
 import org.jumao.spark.googleAnalytics.utils.SystemPropUtils
 

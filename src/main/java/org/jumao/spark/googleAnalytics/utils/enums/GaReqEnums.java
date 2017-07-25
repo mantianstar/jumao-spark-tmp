@@ -1,6 +1,7 @@
 package org.jumao.spark.googleAnalytics.utils.enums;
 
 /**
+ *
  */
 public enum GaReqEnums {
 

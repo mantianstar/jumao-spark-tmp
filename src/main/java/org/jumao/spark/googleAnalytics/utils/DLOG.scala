@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util
 
 import com.google.common.io.Files
-import org.jumao.spark.googleAnalytics.constants.Key
+import org.jumao.spark.googleAnalytics.utils.constants.Key
 
 /**
   * driver log
