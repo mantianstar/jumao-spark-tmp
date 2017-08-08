@@ -6,7 +6,7 @@ import org.jumao.spark.googleAnalytics.utils.SystemPropUtils
 object Key {
 
 
-    private val LOG_FILE_PATH_PROP = "log.file.path"
+    private val DLOG_FILE_PATH_PROP = "dlog.file.path"
     private val EMAIL_LOG_LOCATION_PROP = "email.log.location"
 
     private val HADOOP_CORE_SITE_CONF_PROP = "hadoop.core.site.conf"
@@ -15,7 +15,7 @@ object Key {
 
 
     val SPARK_MASTER = SystemPropUtils.get("spark.master", "yarn")
-    val DLOG_FILE_PATH = SystemPropUtils.get(LOG_FILE_PATH_PROP, "/tmp/spark/app.log")
+    val DLOG_FILE_PATH = SystemPropUtils.get(DLOG_FILE_PATH_PROP, "/tmp/spark/app.log")
     val EMAIL_LOG_LOCATION = SystemPropUtils.get(EMAIL_LOG_LOCATION_PROP, "/tmp/spark/emaillog.txt")
 
     val HADOOP_CORE_SITE_CONF = SystemPropUtils.get(HADOOP_CORE_SITE_CONF_PROP, "/opt/cloudera/parcels/CDH/lib/hadoop/etc/hadoop/core-site.xml")
