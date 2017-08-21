@@ -6,9 +6,9 @@ import com.google.api.services.analyticsreporting.v4.model.DateRange;
 import com.google.api.services.analyticsreporting.v4.model.Dimension;
 import com.google.api.services.analyticsreporting.v4.model.Metric;
 import com.google.api.services.analyticsreporting.v4.model.ReportRequest;
-import org.jumao.spark.googleAnalytics.constants.Key;
 import org.jumao.spark.googleAnalytics.utils.DateUtils;
 import org.jumao.spark.googleAnalytics.utils.PlatformUtil;
+import org.jumao.spark.googleAnalytics.utils.constants.Key;
 
 import java.util.Arrays;
 import java.util.Calendar;

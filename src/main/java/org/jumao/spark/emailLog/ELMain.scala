@@ -16,8 +16,9 @@ object ELMain extends ELBasic with MainBasicTrait {
     def main(args: Array[String]): Unit = {
         checkAndLoadConfPath(args)
 
+        val master = Key.SPARK_MASTER
         val spark = SparkSession.builder.appName(APP_NAME)
-                .master(Key.SPARK_MASTER).getOrCreate()
+                .master(master).getOrCreate()
         import spark.implicits._
 
         val originDS = spark.read.textFile(Key.EMAIL_LOG_LOCATION)
